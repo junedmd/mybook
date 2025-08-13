@@ -7,7 +7,7 @@ import dotenv from "dotenv";
 dotenv.config();
 import cors from "cors";
 app.use(cors());
-import { postBook,getBook}from "./controller/books.js"
+import { postBook,getBook,deleteBook}from "./controller/books.js"
 
 const PORT = process.env.PORT || 5000;
 
@@ -26,8 +26,8 @@ const connectMongoDB = async ()=>{
 connectMongoDB();
 
 app.use(cors({
-  origin: 'http://localhost:5173',
-  methods: ['GET', 'POST'],
+  origin: "http://localhost:5173" || "http://localhost:5174",
+  methods: ['GET', 'POST' ,'DELETE'],
   credentials: true
 }));
 
@@ -35,9 +35,10 @@ app.use(cors({
 
 app.post("/api/books",postBook);
 app.get("/api/books",getBook);
+app.delete("/api/books/:id",deleteBook);
 
 
-app.listen((req,res)=>{
+app.listen(PORT,(req,res)=>{
     console.log("server is running");
 })
 

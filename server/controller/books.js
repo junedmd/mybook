@@ -1,8 +1,6 @@
 
 import Book from "../models/book.js"
 
-
-
 const postBook = async (req, res) => {
     
     const { name, description } = req.body;
@@ -60,5 +58,16 @@ const getBook = async (req, res) => {
     }
 };
 
+const deleteBook= async (req, res) => {
+  try {
+    const {id}= req.params;
+    await Book.deleteOne({_id:id});
+    res.status(200).send({ success: true, message: "Book deleted successfully" });
+  } catch (e) {
+    res.status(500).send({ success: false, message: e.message });
+  }
+};
 
-export { postBook,getBook };
+
+
+export { postBook,getBook,deleteBook };
