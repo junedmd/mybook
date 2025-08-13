@@ -26,7 +26,7 @@ const connectMongoDB = async ()=>{
 connectMongoDB();
 
 app.use(cors({
-  origin: ["http://localhost:5173" || "http://localhost:5174" ],
+  origin: ["http://localhost:5173" , "https://mybook-bh9a.vercel.app/" ],
   methods: ['GET', 'POST' ,'DELETE'],
   credentials: true
 }));
