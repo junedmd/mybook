@@ -16,7 +16,7 @@ function App() {
 
       try {
 
-        const result = await axios.get("api/books");
+        const result = await axios.get("https://mybook-mzd0.onrender.com/api/books");
         setData(result.data.data);
         console.log(result.data)
 
@@ -32,7 +32,7 @@ function App() {
   const submitData = async () => {
 
     try {
-      const res = await axios.post("/api/books", { name, description });
+      const res = await axios.post("https://mybook-mzd0.onrender.com/api/books", { name, description });
       setData((prevData) => [...prevData, res.data.data]);
       setName("");
       SetDescription("");
@@ -43,7 +43,7 @@ function App() {
 
   const deleteBook = async (id) => {
     try {
-      await axios.delete(`/api/books/${id}`);
+      await axios.delete(`https://mybook-mzd0.onrender.com/api/books/${id}`);
       setData((prevData) => prevData.filter((book) => book._id !== id));
 
     } catch (e) {
